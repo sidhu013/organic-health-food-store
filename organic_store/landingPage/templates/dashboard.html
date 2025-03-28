@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1">
+    <link rel="stylesheet" href="{% static 'landingPage/dashboard.css' %}">
+    <title>Leo Admin dashboard</title>
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+
+<body>
+
+    <input type="checkbox" name="" id="sidebar-toggle">
+
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <div class="brand-img-container">
+
+                    <img src="https://static.vecteezy.com/system/resources/previews/011/074/760/large_2x/organic-healthy-food-logo-organic-food-logo-vector.jpg"
+                        alt="">
+                </div>
+
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-user">
+                <img
+                    src="data:image/png;base64,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">
+                <div>
+                    <h3>User</h3>
+                    <span>Username@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-head">
+                    <span>Dashboard</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="orders">
+                            <span class="las la-balance-scale"></span>
+                            orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="las la-chart-pie"></span>
+                            sale
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="menu-head">
+                    <span>Applications</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="inventory">
+                            <span class="las la-calendar"></span>
+                            Inventory
+                        </a>
+                    </li>
+                    <li>
+                        <a href="addstock">
+                            <span class="las la-users"></span>
+                            Add Stock
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="las la-shopping-cart"></span>
+                            Daily Report
+                        </a>
+                    </li>          
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="sidebar-toggle">
+                    <span class=" las la-bars"></span>
+                </label>
+            </div>
+
+            <div class="header-icons">
+                <span class="las la-search"></span>
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Staff dashboard</h1>
+                    <small>Monitor key metrics. Check reporting and review insights </small>
+                </div>
+                <div class="header-actions">
+                    <button>
+                        <span class="las la-file-new order"></span>
+                        New order
+                    </button>
+                    <button>
+                        <span class="las la-view history"></span>
+                        view history
+                    </button>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card-single">
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <span>Purchases</span>
+                                <small> Number of purchases</small>
+                            </div>
+
+                            <h2>17,663</h2>
+
+                            <small>2% less purchase</small>
+                        </div>
+                        <div class="card-chart danger">
+                            <span class="las la-chart-line"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <span>Today's sale</span>
+                                <small> Value of today's sale</small>
+                            </div>
+
+                            <h2>4,567</h2>
+
+                            <small>10% less sale</small>
+                        </div>
+                        <div class="card-chart success">
+                            <span class="las la-chart-line"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <span>Available stock</span>
+                                <small></small>
+                            </div>
+
+                            <h2>46,085</h2>
+
+                            <small>2% less visitors</small>
+                        </div>
+                        <div class="card-chart yellow">
+                            <span class="las la-chart-line"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="carts-container">
+
+                {% for order in orders %}
+
+                <div class="shopping-cart">
+                    <div class="box">
+                        <div class="header">
+                            <h3>{{ order.name }}</h3>
+                            <i class="las la-trash"></i>
+                        </div>
+                    </div> 
+                    {% for item in order.items %}
+                    <div class="box">
+                        <i class=" las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79CzBgHFJGY5Ug__nWr6Qvshazo2ENr-yDQ&s">
+                        <div class="content">
+                            <h3>{{ item.name }}</h3>
+                            <span class="price">Rs.{{ item.price }}/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAl7bvg6kkAEr5PM0dMvDFmA8IxQnM7dvQxA&s">
+                        <div class="content">
+                            <h3>Lichi</h3>
+                            <span class="price">Rs 70/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://media.istockphoto.com/id/1217479737/photo/pineapple-with-slices-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=KYxsZ-Bv1tEgjrOmH9qxak06iTK9S5betgteqTuDzhU=">
+                        <div class="content">
+                            <h3>Pineapple</h3>
+                            <span class="price">Rs 90/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="total"> total : Rs 210/-</div>
+                    <a href="#" class="btn">checkout</a>
+                </div>
+                <div class="shopping-cart">
+                    <div class="box">
+                        <div class="header">
+                            <h3>The new customer</h3>
+                            <i class="las la-trash"></i>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class=" las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79CzBgHFJGY5Ug__nWr6Qvshazo2ENr-yDQ&s">
+                        <div class="content">
+                            <h3>Guava</h3>
+                            <span class="price">Rs 50/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAl7bvg6kkAEr5PM0dMvDFmA8IxQnM7dvQxA&s">
+                        <div class="content">
+                            <h3>Lichi</h3>
+                            <span class="price">Rs 70/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://media.istockphoto.com/id/1217479737/photo/pineapple-with-slices-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=KYxsZ-Bv1tEgjrOmH9qxak06iTK9S5betgteqTuDzhU=">
+                        <div class="content">
+                            <h3>Pineapple</h3>
+                            <span class="price">Rs 90/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total"> total : Rs 210/-</div>
+                    <a href="#" class="btn">checkout</a>
+                </div>
+                <div class="shopping-cart">
+                    <div class="box">
+                        <div class="header">
+                            <h3>The new customer</h3>
+                            <i class="las la-trash"></i>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class=" las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79CzBgHFJGY5Ug__nWr6Qvshazo2ENr-yDQ&s">
+                        <div class="content">
+                            <h3>Guava</h3>
+                            <span class="price">Rs 50/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAl7bvg6kkAEr5PM0dMvDFmA8IxQnM7dvQxA&s">
+                        <div class="content">
+                            <h3>Lichi</h3>
+                            <span class="price">Rs 70/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <i class="las la-trash"></i>
+                        <img
+                            src="https://media.istockphoto.com/id/1217479737/photo/pineapple-with-slices-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=KYxsZ-Bv1tEgjrOmH9qxak06iTK9S5betgteqTuDzhU=">
+                        <div class="content">
+                            <h3>Pineapple</h3>
+                            <span class="price">Rs 90/-</span>
+                            <span class="quantity">qty: 1</span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="total"> total : Rs 210/-</div>
+                    <a href="#" class="btn">checkout</a>
+                </div>
+
+            </div>
+
+
+
+            <div class="jobs-grid">
+
+                <div class="analytics-card">
+                    <div class="analytics-hea">
+                        <h3>Action needed</h3>
+
+                        <span class="las la-ellipsis-h"></span>
+                    </div>
+
+                    <div class="analytics-chart">
+                        <div class="chart-circle">
+                            <h1>74%</h1>
+                        </div>
+
+                        <div class="analytics-note">
+                            <small>Note:Current sorit requires stakeholders meeting to reach conclusion</small>
+                        </div>
+                    </div>
+                    <div class="analytics-btn">
+                        <button>Generate report</button>
+                    </div>
+                </div>
+            </div>
+            <div class="jobs">
+                <h2>jobs <small>See all jobs <span class="las la-arrow-right"></span></small></h2>
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Customer experience designer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Design
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>8 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator even"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Software developer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Development
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>3 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Customer experience designer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Design
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>8 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator even"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Software developer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Development
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>3 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Customer experience designer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Design
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>8 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="indicator even"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Software developer
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Development
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Copenhagen DK.
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    Posted 6 days ago
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <button>3 applicants</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-responsive">
+                </div>
+            </div>
+    </div>
+    </main>
+    </div>
+    <script src="{% static 'landingPage/dashboard.js' %}"></script>
+    <label for="sidebar-toggle" class="body-label"></label>
+</body>
+
+</html>

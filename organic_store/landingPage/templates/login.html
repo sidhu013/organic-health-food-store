@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'landingPage\login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url(https://img.freepik.com/free-photo/vertical-closeup-shot-blueberries-sparkling-water_181624-58011.jpg?ga=GA1.1.108628300.1739453241&semt=ais_hybrid);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <form id="login-form">
+            <div>
+
+                <h1>Login</h1>
+
+            </div>
+            <div class="inputbox">
+
+                <input type="username" id="login_username" name="login_username" required>
+                <label for="login_username" ><div>Username</div> <div class="fa-solid fa-user"></div></label>
+            </div>
+            <div class="inputbox">
+
+                <input type="text" id="login_email" name="login_email" required>
+                <label for="login_email"> <div>Email </div> <div class="fa-solid fa-envelope"></div></label>
+            </div>
+            <div class="inputbox">
+
+                <input type="password" id="login_password" name="login_password" required>
+                <label for="login_password"><div>Password</div> <div class="fa-solid fa-lock"></div></label>
+            </div>
+            <div class="forget">
+                <input type="checkbox">Remember Me</label>
+                <label>
+                <a href="#">Forget password</a>
+                </label>
+            </div>
+            <button type="submit">Log In</button>
+            <div class="register">
+                <p>Don't have an acount <a href="#">Register</a></p>
+            </div>
+        </form>
+    </section>
+
+    <script src="{% static 'landingPage\login.js' %}"></script>
+</body>
+
+</html>

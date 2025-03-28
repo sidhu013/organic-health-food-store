@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .navbar-brand{
     font-size: 2rem;
@@ -55,7 +56,7 @@
 }
 .btn1{
     height: 45px;
-    width: 35;
+    width: 200px;
     border: none;
     outline: none;
     background-color: rgb(184, 10, 47);
@@ -63,6 +64,56 @@
     font-weight: 700;
     border-radius: 60px;
 }
+.btn1:hover{
+    background-color:rgb(232, 16, 16);
+    transition: 0.5s;
+}
 h1{
     font-weight: 700;
+}
+.card:hover{
+    box-shadow: 2px -5px 17px 1px rgba(0,0,0,0.53);
+-webkit-box-shadow: 2px -5px 17px 1px rgba(0,0,0,0.53);
+-moz-box-shadow: 2px -5px 17px 1px rgba(0,0,0,0.53);
+transition: o.5s;
+}
+.Apple{
+    /* background: ; */
+    background-size: cover;
+    height: 80vh;
+    width: 100%;
+}
+.Apple h1{
+   
+    font-family: "lobster", cursive; 
+}
+.news{
+    background-color: black;
+    color: white ;
+}
+.btn2{
+    height: 45px;
+    width: 100px;
+    background: white;
+    margin-left: -10px;
+    border: 2px solid white;
+    font-weight: 600;
+}
+.news input{
+    height: 45px;
+    width: 55%;
+    border: 2px solid white;
+    outline: none;
+    background: black;
+    color: white;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.news::placeholder{
+    color: white;
+}
+.fab{
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding-right: 5px;
 }
