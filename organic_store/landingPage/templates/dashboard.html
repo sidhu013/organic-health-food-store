@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1">
-    <link rel="stylesheet" href="{% static 'landingPage/dashboard.css' %}">
-    <title>Leo Admin dashboard</title>
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'landingPage/dashboard.css' %}">
+    <title>Leo Admin dashboard</title>
 </head>
 
 <body>
@@ -18,10 +18,9 @@
     <div class="sidebar">
         <div class="sidebar-brand">
             <div class="brand-flex">
+                
                 <div class="brand-img-container">
-
-                    <img src="https://static.vecteezy.com/system/resources/previews/011/074/760/large_2x/organic-healthy-food-logo-organic-food-logo-vector.jpg"
-                        alt="">
+                    <img src="https://static.vecteezy.com/system/resources/previews/011/074/760/large_2x/organic-healthy-food-logo-organic-food-logo-vector.jpg"  alt="">
                 </div>
 
                 <div class="brand-icons">
@@ -30,6 +29,7 @@
                 </div>
             </div>
         </div>
+
         <div class="sidebar-main">
             <div class="sidebar-user">
                 <img
@@ -52,7 +52,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="sale">
                             <span class="las la-chart-pie"></span>
                             sale
                         </a>
@@ -88,6 +88,7 @@
 
     <div class="main-content">
         <header>
+
             <div class="menu-toggle">
                 <label for="sidebar-toggle">
                     <span class=" las la-bars"></span>
@@ -100,13 +101,14 @@
                 <span class="las la-sms"></span>
             </div>
         </header>
-
         <main>
+
             <div class="page-header">
                 <div>
                     <h1>Staff dashboard</h1>
                     <small>Monitor key metrics. Check reporting and review insights </small>
                 </div>
+
                 <div class="header-actions">
                     <button>
                         <span class="las la-file-new order"></span>
@@ -157,6 +159,8 @@
                 </div>
 
                 <div class="card-single">
+                    <a href="inventory">
+
                     <div class="card-flex">
                         <div class="card-info">
                             <div class="card-head">
@@ -172,6 +176,7 @@
                             <span class="las la-chart-line"></span>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
 
@@ -188,6 +193,7 @@
                         </div>
                     </div> 
                     {% for item in order.items %}
+
                     <div class="box">
                         <i class=" las la-trash"></i>
                         <img
@@ -199,15 +205,21 @@
                         </div>
                     </div>
                     {% endfor %}
-
+              
                     
+                    <div class="total"> total : Rs {{ order.total }}-</div>
+                    <a href="" class="btn checkout">checkout</a>
+                </div>
+                {% endfor %}
+                </div>
+
                     <div class="box">
                         <i class="las la-trash"></i>
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAl7bvg6kkAEr5PM0dMvDFmA8IxQnM7dvQxA&s">
                         <div class="content">
                             <h3>Lichi</h3>
-                            <span class="price">Rs 70/-</span>
+                       <span class="price">Rs 70/-</span>
                             <span class="quantity">qty: 1</span>
                         </div>
                     </div>
@@ -311,238 +323,13 @@
                     <a href="#" class="btn">checkout</a>
                 </div>
 
-            </div>
+            </div> 
 
-
-
-            <div class="jobs-grid">
-
-                <div class="analytics-card">
-                    <div class="analytics-hea">
-                        <h3>Action needed</h3>
-
-                        <span class="las la-ellipsis-h"></span>
-                    </div>
-
-                    <div class="analytics-chart">
-                        <div class="chart-circle">
-                            <h1>74%</h1>
-                        </div>
-
-                        <div class="analytics-note">
-                            <small>Note:Current sorit requires stakeholders meeting to reach conclusion</small>
-                        </div>
-                    </div>
-                    <div class="analytics-btn">
-                        <button>Generate report</button>
-                    </div>
-                </div>
-            </div>
-            <div class="jobs">
-                <h2>jobs <small>See all jobs <span class="las la-arrow-right"></span></small></h2>
-                <table width="100%">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Customer experience designer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Design
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>8 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator even"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Software developer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Development
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>3 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Customer experience designer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Design
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>8 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator even"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Software developer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Development
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>3 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Customer experience designer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Design
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>8 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator even"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Software developer
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Development
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Copenhagen DK.
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    Posted 6 days ago
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <button>3 applicants</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="table-responsive">
-                </div>
-            </div>
-    </div>
     </main>
+   
     </div>
     <script src="{% static 'landingPage/dashboard.js' %}"></script>
+    
     <label for="sidebar-toggle" class="body-label"></label>
 </body>
 

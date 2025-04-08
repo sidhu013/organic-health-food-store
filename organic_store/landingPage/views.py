@@ -66,23 +66,40 @@ def dashboardPage(request):
 
 @csrf_exempt
 def login_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         data = json.loads(request.body)
-        print(data)
         username = data.get('login_username')
         password = data.get('login_password')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return JsonResponse({'success': True})
+            return JsonResponse({"success": True})
         else:
-            return JsonResponse({'success': False, 'message': 'Invalid credentials.'})
+            return JsonResponse({"success": False, 'message': 'invalid credentials.'})
 
-    return JsonResponse({'success': False, 'message': 'Invalid request method.'})
+    return JsonResponse({"success" : False, 'message': 'invalid request method.'})
 
 def inventoryPage(request):
-    return render(request, "inventory.html")
+    context = {
+        'items' : [],
+    }
+
+    items = Item.objects.all()
+    print(items)
+    for item in items:
+        temp = {
+            'name' : item.name,
+            'category' : item.category.name,
+            'price' : item.price,
+            'quantity' : item.quantity,
+            'stock_price' : item.quantity*item.price,
+        }
+        context["items"].append(temp)
+
+        print(context)
+        
+    return render(request, "inventory.html", context)    
 
 
 def orderPage(request):
@@ -111,12 +128,35 @@ def orderPage(request):
             temp["total_items"] += 1
 
         temp["total"]=total
-        context["orders"].append(temp)     
-    print(context)   
+        context["orders"].append(temp)       
     return render(request, "order.html", context)
  
 def addstockPage(request):
     return render(request, "addstock.html")
 
+@csrf_exempt
+def addstock_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        item_name = data.get('item_name')
+        item_category = data.get('item_category')
+        item_price = data.get('item_price')
+        item_quantity = data.get('item_quantity')
+
+        item_name = str(item_name).lower()
+        item_category = str(item_category).lower()
+
+        cat, created_cat = Category.objects.get_or_create(name=item_category)
+
+        item, created_item = Item.objects.get_or_create(name=item_name, category=cat, price=item_price, quantity=item_quantity)
+        
+        if created_item:
+            return JsonResponse({"success": True})
+        else:
+            return JsonResponse({"success": False, 'message': 'Item already exited'})
+def addStockpage(request):
+    return render(request, 'addstock.html')
 def salePage(request):
     return render(request, "sale.html")
+def dailyreportPage(request):
+    return render(request, "dailyreport.html")

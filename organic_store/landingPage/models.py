@@ -24,11 +24,5 @@ class Order(models.Model):
     is_paid=models.BooleanField()
 
     def __str__(self):
-        flag = ''
-        if (self.is_paid):
-            flag='paid'
-        else:
-            flag = 'not paid'
-    
-        return f"{self.name} : {flag} : {self.created_at}"
-        #return f"{self.name}:"
+      return f"{self.name} : {self.created_at}"
+        # return f"{self.name}:"

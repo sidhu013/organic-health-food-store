@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
+<!--Designed by codingLab - youtube.com/codinglabyt -->
  <html lang="en" dir="1tr">
     <head>
         <meta charset="UTF-8">
@@ -10,30 +11,35 @@
     </head>
     <body>
         <div class="container">
-            <div class="title">Addstock</div>
-            <form action="#">
+            <div class="title"> Addstock</div>
+            <form id="addstock">
+                {% csrf_token %}
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Item</span>
-                        <input type="text" placeholder="Enter item" required>  
+                        <span class="details">Item:</span>
+                        <input type="text" name="item_name" placeholder="Enter item name" required>  
                     </div>
                     <div class="input-box">
-                        <span class="details">Cat</span>
-                        <input type="text" placeholder="Enter category" required>  
+                        <span class="details">Cat:</span>
+                        <input type="text" name="item_category" placeholder="Enter cat name" required>  
                     </div>
                     <div class="input-box">
-                        <span class="details">Price</span>
-                        <input type="text" placeholder="Enter price" required>  
+                        <span class="details">Price:</span>
+                        <input type="text" name="item_price" placeholder="Enter price" required>  
                     </div>
                     <div class="input-box">
-                        <span class="details">Quantity</span>
-                        <input type="text" placeholder="Enter quantity" required>  
+                        <span class="details">Quantity:</span>
+                        <input type="text" name="item_quantity" placeholder="Enter quantity" required>  
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" value="Addstock">
+                    <input type="submit" value="ADDSTOCK">
                 </div>
-            </form>
+                 </form>
         </div> 
+
+        <script src="{% static 'landingPage/addstock.js' %}"></script>
     </body>
+
+
  </html>
