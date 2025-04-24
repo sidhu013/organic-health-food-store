@@ -51,6 +51,7 @@ def dashboardPage(request):
                 temp_item = {
                     "name": item.name,
                     "price": item.price,
+                    "url": item.url,
 
                 }
                 total += item.price
@@ -59,7 +60,7 @@ def dashboardPage(request):
             temp["total"]=total
             context["orders"].append(temp)
 
-            
+    print(context)
     return render(request, "dashboard.html", context)
 
 
@@ -132,7 +133,7 @@ def orderPage(request):
     return render(request, "order.html", context)
  
 def addstockPage(request):
-    return render(request, "addstock.html")
+    return render(request, "add_stock.html")
 
 @csrf_exempt
 def addstock_view(request):
@@ -154,8 +155,56 @@ def addstock_view(request):
             return JsonResponse({"success": True})
         else:
             return JsonResponse({"success": False, 'message': 'Item already exited'})
-def addStockpage(request):
-    return render(request, 'addstock.html')
+
+from django.shortcuts import render
+from .models import Item, Category, Order
+from django.db.models import Count
+
+def salePage(request):
+    products_count = Item.objects.count()
+    categories_count = Category.objects.count()
+    customers_count = Order.objects.values('name').distinct().count()
+    alerts_count = Item.objects.filter(quantity__lt=10).count()
+
+    # Get top 4 products by quantity
+    top_products_qs = Item.objects.order_by('-quantity')[:4]
+    top_products = [
+        {"name": item.name, "quantity": item.quantity}
+        for item in top_products_qs
+    ]
+
+    # Orders grouped by date for last 7 days (for area chart)
+    from django.utils import timezone
+    from datetime import timedelta
+    today = timezone.now()
+    seven_days_ago = today - timedelta(days=6)
+
+    daily_orders = (
+        Order.objects
+        .filter(created_at_date_gte=seven_days_ago.date())
+        .extra(select={'day': "date(created_at)"})
+        .values('day')
+        .annotate(total=Count('id'))
+        .order_by('day')
+    )
+
+    sales_data = {
+        "labels": [entry["day"].strftime('%b %d') for entry in daily_orders],
+        "values": [entry["total"] for entry in daily_orders],
+    }
+
+    context = {
+        "products_count": products_count,
+        "categories_count": categories_count,
+        "customers_count": customers_count,
+        "alerts_count": alerts_count,
+        "top_products": top_products,
+        "sales_data": sales_data,
+    }
+
+    print(context)
+    return render(request, "sale.html")
+
 def salePage(request):
     return render(request, "sale.html")
 def dailyreportPage(request):

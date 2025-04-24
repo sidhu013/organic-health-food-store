@@ -436,7 +436,7 @@ main {
     overflow-x: auto;
 }
 .jobs table tr{
-    display: flex;
+    display: table-row;
     justify-content: space-between;
     background-color: #fff;
 }
